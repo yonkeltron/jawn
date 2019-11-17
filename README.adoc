@@ -1,0 +1,7 @@
+= jawn: jawn automates work now
+
+Most people lead tremendously busy lives,  where they end up with a ton of https://www.atlasobscura.com/articles/the-enduring-mystery-of-jawn-philadelphias-allpurpose-noun[jawn] to do. Personally, I got sick of doing so much by hand so I wrote `jawn` to help me deal with all my jawn. Hopefully this jawn, `jawn`, will help you.
+
+== Theory of operation
+
+The central element of `jawn` is the `Jawnfile`.

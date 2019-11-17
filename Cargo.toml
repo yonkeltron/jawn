@@ -1,0 +1,21 @@
+[package]
+name = "jawn"
+version = "0.1.0"
+authors = ["Jonathan E. Magen <yonkeltron@gmail.com>"]
+description = "jawn: jawn automates work now"
+edition = "2018"
+readme = "README.adoc"
+homepage = "https://github.com/yonkeltron/jawn"
+repository = "https://github.com/yonkeltron/jawn"
+license = "Apache-2.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "jawn"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1.0"
+clap = "2.33.0"
+indicatif = "0.13.0"
