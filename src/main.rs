@@ -1,10 +1,10 @@
 use clap::{App, Arg};
-use std::thread;
-use std::time::Duration;
 
 use indicatif::{ProgressBar, ProgressStyle};
 
 mod jawnfile;
+
+use jawnfile::Jawnfile;
 
 fn main() {
     let matches = App::new("jawn")
@@ -21,24 +21,28 @@ fn main() {
         )
         .get_matches();
 
-    let jawnfile_path = match matches.value_of("jawnfile").unwrap_or("") {
-        "" => "Jawnfile",
-        path => path,
+    let provided_jawnfile_path = matches.value_of("jawnfile").unwrap_or("");
+    let jawnfile_path = if provided_jawnfile_path.is_empty() {
+        "Jawnfile"
+    } else {
+        provided_jawnfile_path
     };
 
-    println!("Jawnfile path: {}", jawnfile_path);
+    let res = Jawnfile::from_path(jawnfile_path).and_then(|jawnfile| {
+        let pb = ProgressBar::new(1024);
+        pb.set_style(
+            ProgressStyle::default_bar()
+                .template("{spinner:.green} [{elapsed_precise}] [{bar:50.cyan/blue}] ({pos}/{len})")
+                .progress_chars("#>-"),
+        );
 
-    let pb = ProgressBar::new(1024);
-    pb.set_style(
-        ProgressStyle::default_bar()
-            .template("{spinner:.green} [{elapsed_precise}] [{bar:50.cyan/blue}] ({pos}/{len})")
-            .progress_chars("#>-"),
-    );
+        jawnfile.execute(pb);
 
-    for _i in 0..1000 {
-        thread::sleep(Duration::from_millis(5));
-        pb.inc(1);
+        Ok("jawn complete")
+    });
+
+    match res {
+        Ok(msg) => println!("{}", msg),
+        Err(err) => eprintln!("{}", err),
     }
-
-    pb.finish_with_message("jawn complete");
 }
