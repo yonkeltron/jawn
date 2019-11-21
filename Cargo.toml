@@ -1,6 +1,6 @@
 [package]
 name = "jawn"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Jonathan E. Magen <yonkeltron@gmail.com>"]
 description = "jawn: jawn automates work now"
 edition = "2018"
@@ -19,3 +19,6 @@ path = "src/main.rs"
 anyhow = "1.0"
 clap = "2.33.0"
 indicatif = "0.13.0"
+
+[package]
+exclude = ["assets", "public"]
