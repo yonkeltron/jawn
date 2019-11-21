@@ -4,4 +4,8 @@ Most people lead tremendously busy lives,  where they end up with a ton of https
 
 == Theory of operation
 
-The central element of `jawn` is the `Jawnfile`.
+The central element of `jawn` is the `Jawnfile`.  It contains a living definition of your jawn and serves as a catalog of jawn. If you have more jawn to do, add more jawn to the `Jawnfile`.
+
+Jawn are expressed using a dead-simple DSL so straightforward, that even a Cowboys fan can figure it out. Each jawn in the `Jawnfile` is a single declaration followed by a newline. One line is one jawn.
+
+Since `jawn` is written in Rust, it's actually quite performant and you'll notice `jawn` finishes almost instantaneously for workloads with less than 70-100 jawn.
