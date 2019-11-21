@@ -8,6 +8,7 @@ readme = "README.adoc"
 homepage = "https://github.com/yonkeltron/jawn"
 repository = "https://github.com/yonkeltron/jawn"
 license = "Apache-2.0"
+exclude = ["assets", "public"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -19,6 +20,3 @@ path = "src/main.rs"
 anyhow = "1.0"
 clap = "2.33.0"
 indicatif = "0.13.0"
-
-[package]
-exclude = ["assets", "public"]
